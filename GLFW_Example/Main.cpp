@@ -45,13 +45,13 @@ int main(void)
 
 	MyMesh* pMesh = new MyMesh();
 
-	pMesh->AddVertexPosition(glm::vec3(0.0f, 0.0f, 0.0f));
-	pMesh->AddVertexPosition(glm::vec3(5.0f, 0.0f, 0.0f));
-	pMesh->AddVertexPosition(glm::vec3(0.0f, 5.0f, 0.0f));
+	pMesh->AddVertexPosition(glm::vec3(-5.0f, -2.5f, 0.0f));
+	pMesh->AddVertexPosition(glm::vec3(5.0f, -2.5f, 0.0f));
+	pMesh->AddVertexPosition(glm::vec3(0.0f, 2.5f, 0.0f));
 
-	pMesh->AddVertexColor(glm::vec3(0.0f, 1.0f, 0.0f));
 	pMesh->AddVertexColor(glm::vec3(1.0f, 0.0f, 0.0f));
-	pMesh->AddVertexColor(glm::vec3(0.0f, 0.0f, 1.0f));
+	pMesh->AddVertexColor(glm::vec3(1.0f, 0.0f, 0.0f));
+	pMesh->AddVertexColor(glm::vec3(1.0f, 0.0f, 0.0f));
 
 	pMesh->CompileOpenGL3X();
 

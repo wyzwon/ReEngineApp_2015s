@@ -1,7 +1,7 @@
 #include "AppClass.h"
 void AppClass::InitWindow(String a_sWindowName)
 {
-	super::InitWindow("Bobadilla, Alberto - 3D Transformations");
+	super::InitWindow("Bouffard, Thomas - 3D Transformations");
 	m_v4ClearColor = vector4(0.0f, 0.0f, 0.0f, 0.0f);
 }
 
@@ -19,6 +19,11 @@ void AppClass::InitVariables(void)
 
 	//Initializing the primitives
 	m_pSphere->GenerateSphere(0.5f, 5, REWHITE);
+
+	m_m4Sphere = IDENTITY_M4;
+
+	m_m4Sphere = glm::translate(IDENTITY_M4, vector3(1, 2, 0));
+	m_m4Sphere = glm::scale(m_m4Sphere, vector3(2.0f, 2.0f, 2.0f));
 }
 
 void AppClass::Update(void)
@@ -58,6 +63,11 @@ void AppClass::Display(void)
 
 void AppClass::Release(void)
 {
+	/*if (m_pCube != nullptr) // what safe delete does
+	{
+	delete m_pCube;
+	m_pCube = nullptr;
+	}*/
 	SafeDelete(m_pCube);
 	SafeDelete(m_pCone);
 	SafeDelete(m_pCylinder);

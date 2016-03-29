@@ -11,6 +11,21 @@ void AppClass::InitWindow(String a_sWindowName)
 
 void AppClass::InitVariables(void)
 {
+	m_pCameraMngr->SetPosition(vector3(0.0f, 0.0f, 35.0f));
+	srand(time(NULL));
+	m_nobjects = rand() % 23 + 5;
+	vector3 v3Start = vector3(-m_nobjects, 0.0f, 0.0f);
+	vector3 v3End = vector3(m_nobjects, 0.0f, 0.0f);
+	
+	m_pSphere = new PrimitiveClass[m_nobjects];
+	m_pMatrix = new matrix4[m_nobjects];
+
+	for (int i = 0; i < m_nobjects; i++)
+	{
+		float fpercent = MapValue(static_cast<float>(m_nobjects), 0.0f, static_cast<float>(m_nobjects), 0.0f, 1.0f);
+		//m_pSphere[i].GenerateSphere(1.0f, 5.0f, vector3(fpercent, 0.0f, 0.0f));
+	}
+
 	m_selection = std::pair<int, int>(-1, -1);
 	//Set the camera at a position other than the default
 	m_pCameraMngr->SetPositionTargetAndView(vector3(0.0f, 2.5f, 12.0f), vector3(0.0f, 2.5f, 11.0f), REAXISY);

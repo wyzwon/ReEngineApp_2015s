@@ -1,7 +1,7 @@
 #include "AppClass.h"
 void AppClass::InitWindow(String a_sWindowName)
 {
-	super::InitWindow("SLERP - YOUR USER NAME GOES HERE"); // Window Name
+	super::InitWindow("SLERP - Thomas Bouffard"); // Window Name
 
 	//Setting the color to black
 	m_v4ClearColor = vector4(0.0f);
@@ -22,12 +22,15 @@ void AppClass::InitVariables(void)
 
 	//Setting the days duration
 	m_fDay = 1.0f;
+
+	
 }
 
 void AppClass::Update(void)
 {
+
 	//Update the system's time
-	m_pSystem->UpdateTime();
+	//m_pSystem->UpdateTime();
 
 	//Update the mesh manager's time without updating for collision detection
 	m_pMeshMngr->Update();
@@ -41,6 +44,13 @@ void AppClass::Update(void)
 	//Counting the cumulative time
 	static double fRunTime = 0.0f;
 	fRunTime += fCallTime;
+	
+	matrix4 sunIdentity = matrix4(
+		5.936f, 0.0f, 0.0f, 0.0f,
+		0.0f, 5.936f, 0.0f, 0.0f,
+		0.0f, 0.0f, 5.936f, 0.0f,
+		11.0f, 0.0f, 0.0f, 1.0f);
+
 
 	//Earth Orbit
 	double fEarthHalfOrbTime = 182.5f * m_fDay; //Earths orbit around the sun lasts 365 days / half the time for 2 stops
@@ -48,9 +58,16 @@ void AppClass::Update(void)
 	float fMoonHalfOrbTime = 14.0f * m_fDay; //Moon's orbit is 28 earth days, so half the time for half a route
 
 	//Setting the matrices
-	m_pMeshMngr->SetModelMatrix(IDENTITY_M4, "Sun");
-	m_pMeshMngr->SetModelMatrix(IDENTITY_M4, "Earth");
-	m_pMeshMngr->SetModelMatrix(IDENTITY_M4, "Moon");
+	//m_pMeshMngr->SetModelMatrix(IDENTITY_M4, "Sun");
+	//m_pMeshMngr->SetModelMatrix(glm::scale(vector3(5.936f, 5.936f, 5.936f)), "Sun");
+	m_pMeshMngr->SetModelMatrix(sunIdentity, "Sun");
+
+	m_pMeshMngr->SetModelMatrix(glm::translate(11.0f, 0.0f, 0.0f), "Earth");
+	//m_pMeshMngr->SetModelMatrix(glm::scale(vector3(0.524f, 0.524f, 0.524f)), "Earth");
+
+	m_pMeshMngr->SetModelMatrix(glm::translate(13.0f, 0.0f, 0.0f), "Moon");
+	//m_pMeshMngr->SetModelMatrix(glm::scale(vector3(0.14148f, 0.14148f, 0.14148f)), "Moon");
+	
 
 	//Adds all loaded instance to the render list
 	m_pMeshMngr->AddInstanceToRenderList("ALL");

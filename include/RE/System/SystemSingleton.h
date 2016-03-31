@@ -265,6 +265,8 @@ public:
 	OUTPUT:
 	*/
 	double LapClock(unsigned int a_nClock = 0);
+	//float fpercent = MapValue(static_cast<float>(dDeltaTime
+	//double LapClock(unsigned int a_nClock = 0);
 
 	/*
 	 AddClock

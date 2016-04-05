@@ -19,7 +19,13 @@ void AppClass::InitVariables(void)
 		vector3(0.0f, 2.5f, 0.0f),//What Im looking at
 		REAXISY);//What is up
 	//Load a model onto the Mesh manager
-	m_pMeshMngr->LoadModel("Lego\\Unikitty.bto", "Unikitty");
+	//m_pMeshMngr->LoadModel("Lego\\Unikitty.bto", "Unikitty");
+
+
+
+	//Generate the Cone
+	m_pCone = new PrimitiveClass();
+	m_pCone->GenerateCone(1.0f, 2.0f, 10, RERED);
 }
 
 void AppClass::Update(void)
@@ -42,6 +48,7 @@ void AppClass::Update(void)
 	
 	//Adds all loaded instance to the render list
 	m_pMeshMngr->AddInstanceToRenderList("ALL");
+
 
 	//Indicate the FPS
 	int nFPS = m_pSystem->GetFPS();

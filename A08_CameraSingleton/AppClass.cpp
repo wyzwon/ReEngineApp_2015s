@@ -93,5 +93,6 @@ void AppClass::Display(void)
 
 void AppClass::Release(void)
 {
+	SafeDelete(m_pCone);
 	super::Release(); //release the memory of the inherited fields
 }

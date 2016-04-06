@@ -18,29 +18,29 @@ void AppClass::ProcessKeyboard(void)
 
 #pragma region Modifiers
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::LShift) || sf::Keyboard::isKeyPressed(sf::Keyboard::RShift))
-		bModifier = true;
+		//bModifier = true;
 #pragma endregion
 
 #pragma region Camera Positioning
 	if(bModifier)
 		fSpeed *= 10.0f;
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-		m_pCameraMngr->MoveForward(fSpeed);
+		m_pCamera->MoveForward(fSpeed);
 
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-		m_pCameraMngr->MoveForward(-fSpeed);
+		//m_pCameraMngr->MoveForward(-fSpeed);
 	
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-		m_pCameraMngr->MoveSideways(-fSpeed);
+		//m_pCameraMngr->MoveSideways(-fSpeed);
 
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-		m_pCameraMngr->MoveSideways(fSpeed);
+		//m_pCameraMngr->MoveSideways(fSpeed);
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
-		m_pCameraMngr->MoveVertical(-fSpeed);
+		//m_pCameraMngr->MoveVertical(-fSpeed);
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
-		m_pCameraMngr->MoveVertical(fSpeed);
+		//m_pCameraMngr->MoveVertical(fSpeed);
 #pragma endregion
 
 #pragma region Other Actions

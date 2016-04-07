@@ -80,3 +80,4 @@ void AppClass::Release(void)
 	}
 	super::Release();
 }
+

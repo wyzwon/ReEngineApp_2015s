@@ -1,4 +1,5 @@
 #include "AppClass.h"
+#include "CustomCamera.h"
 void AppClass::InitWindow(String a_sWindowName)
 {
 	super::InitWindow("Bouffard Elsbery A08_CameraSingleton"); // Window Name
@@ -26,6 +27,9 @@ void AppClass::InitVariables(void)
 	//Generate the Cone
 	m_pCone = new PrimitiveClass();
 	m_pCone->GenerateCone(1.0f, 2.0f, 10, RERED);
+
+	m_pCube = new PrimitiveClass();
+	m_pCube->GenerateCube(1.0f, REBLUE);
 }
 
 void AppClass::Update(void)
@@ -70,6 +74,8 @@ void AppClass::Display(void)
 	ClearScreen();
 
 	//Render the grid based on the camera's mode:
+	//m_pCone->Render(glm::perspective(45.0f, 1080.0f / 768.0f, 0.01f, 1000.0f), glm::lookAt(glm::vec3(0.0f, 0.0f, 15.0f),glm::vec3(0.0f, 0.0f, 14.0f),glm::vec3(0.0f, 1.0f, 0.0f)), IDENTITY_M4);
+
 	switch (m_pCameraMngr->GetCameraMode())
 	{
 	default: //Perspective

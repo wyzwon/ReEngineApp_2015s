@@ -1,4 +1,5 @@
 #include "AppClass.h"
+#include "CustomCamera.h"
 void AppClass::ProcessKeyboard(void)
 {
 	bool bModifier = false;

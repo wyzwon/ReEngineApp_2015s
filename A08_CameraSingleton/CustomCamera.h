@@ -9,7 +9,7 @@ using namespace ReEng;
 class CustomCamera
 {
 public:
-	matrix4 CameraTransform;
+	quaternion CameraTransform;
 	matrix4 cameraView;
 	matrix4 cameraProjection;
 	bool cameraOrtho;

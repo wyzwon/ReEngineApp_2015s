@@ -122,7 +122,7 @@ void MyPrimitive::GenerateCone(float a_fRadius, float a_fHeight, int a_nSubdivis
 	vector3 point0a(0, a_fHeight, 0); //top point
 	vector3 point1a(0, -a_fHeight, 0); //bottom point
 
-	float rotateBy = ((PI/ 180) * (360 / a_nSubdivisions));
+	float rotateBy = (float)((PI/ 180) * (360 / a_nSubdivisions));
 	for (int i = 0; i < a_nSubdivisions; i++)
 	{
 		float x = a_fRadius*cos(rotateBy * i);
@@ -181,7 +181,7 @@ void MyPrimitive::GenerateCylinder(float a_fRadius, float a_fHeight, int a_nSubd
 	vector3 pointBottomCenter(0, -a_fHeight, 0); //bottom point
 
 	//bottom points
-	float rotateBy = ((PI / 180) * (360 / a_nSubdivisions));
+	float rotateBy = (float)((PI / 180) * (360 / a_nSubdivisions));
 	for (int i = 0; i < a_nSubdivisions; i++)
 	{
 		float x = a_fRadius*cos(rotateBy * i);

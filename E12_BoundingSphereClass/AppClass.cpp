@@ -109,6 +109,9 @@ void AppClass::Update(void)
 	m_pMeshMngr->SetModelMatrix(glm::translate(m_v3O1) * ToMatrix4(m_qArcBall), "Steve");
 	m_pMeshMngr->SetModelMatrix(glm::translate(m_v3O2), "Creeper");
 
+	//m_m4Steve = m_pMeshMngr->GetModelMatrix("Steve") * glm::translate(m_v3Center1);
+	//m_pMeshMngr->AddSphereToQueue(m_m4Steve
+
 	//Adds all loaded instance to the render list
 	m_pMeshMngr->AddInstanceToRenderList("ALL");
 
@@ -116,6 +119,7 @@ void AppClass::Update(void)
 	int nFPS = m_pSystem->GetFPS();
 	bool bAreColliding = false;
 
+	//vec v3temp = vector3(m_m4Steve * vector3(m_v3Center, 1.0f));
 	//Collision check goes here
 	m_pMeshMngr->Print("x:" + std::to_string( m_v3Center1.x ) + " ", RERED);
 	m_pMeshMngr->Print("y:" + std::to_string(m_v3Center1.y) + " ", RERED);

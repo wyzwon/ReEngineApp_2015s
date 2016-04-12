@@ -4,14 +4,13 @@
 
 void CustomCamera::initVariables()
 {
-	glm::quat identity;
-	CameraTransform = IDENTITY_M4;
+	CameraTransform = quaternion::tquat(IDENTITY_M4);
 
 	target = glm::vec3(0.0f, 0.0f, 0.0f);
 	cameraOrtho = false;
 	CameraPosition = vector3(-10.0f, 0.0f, 0.0f);
 	cameraProjection = IDENTITY_M4;
-	
+
 }
 
 matrix4 CustomCamera::getView()
@@ -31,7 +30,7 @@ matrix4 CustomCamera::getProjection(bool bOrthographic)
 		cameraOrtho = false;
 		return cameraView;
 	}
-	
+
 }
 
 void CustomCamera::setPosition(glm::vec3 newPosition)
@@ -63,40 +62,34 @@ void CustomCamera::moveSideways(float floatIncrement)
 
 void CustomCamera::moveVerticle(float floatIncrement)
 {
-	vector3 sidways = glm::rotate(CameraForward, 90.0f, vector3(1, 0, 0));
-	CameraPosition += (sidways * floatIncrement);
+	vector3 upways = glm::rotate(CameraForward, 90.0f, vector3(0, 0, 1));
+	CameraPosition += (upways * floatIncrement);
 }
 
 void CustomCamera::ChangePitch(float floatIncrement)
 {
-	glm::quat rotationMat;
+	//glm::rotate(CameraTransform, floatIncrement, forward);
 
-	glm::mat4x4 posXrot = glm::mat4x4(
-		1.0f, 0.0f, 0.0f, 0.0f,
-		0.0f, 0.9993f, -0.0348f, 0.0f,
-		0.0f, 0.0348, 0.9993, 0.0f,
-		1.0f, 1.0f, 1.0f, 1.0f);
+	CameraTransform = glm::angleAxis(floatIncrement, CameraForward);
+}
 
+void CustomCamera::ChangeRoll(float floatIncrement)
+{
+	vector3 sidways = glm::rotate(CameraForward, 90.0f, vector3(0, 1, 0));
+	CameraTransform = glm::angleAxis(floatIncrement, sidways);
+}
 
-	/*CameraTransform *= glm::mat4x4(
-	1.0f, 0.0f, 0.0f, 0.0f,
-	0.0f, 0.9993f, -0.0348f, 0.0f,
-	0.0f, 0.0348, 0.9993, 0.0f,
-	1.0f, 1.0f, 1.0f, 1.0f);*/
+void CustomCamera::ChangeYaw(float floatIncrement)
+{
+	//glm::quat rotationMat;
+	vector3 upways = glm::rotate(CameraForward, 90.0f, vector3(0, 0, 1));
 
-	//rotationMat = glm::rotateX(
-
-	rotationMat = glm::angleAxis((float)(PI / 180), vector3(rotationMat.x));
+	CameraTransform = glm::angleAxis(floatIncrement, upways);
 }
 
 void CustomCamera::updateforward()
 {
 	CameraForward = glm::normalize(target - CameraPosition);
-}
-
-glm::mat4x4 CustomCamera::getPosition()
-{
-	//return glm::
 }
 
 

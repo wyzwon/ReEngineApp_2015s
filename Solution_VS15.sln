@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ModelViewer", "ModelViewer\ModelViewer_VS15.vcxproj", "{FB51C0AB-6E10-4DEB-9D27-A3C31251A36D}"
 EndProject
@@ -62,6 +62,14 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "A06s_LERP_DEMO", "A06s_LERP\A06s_LERP.vcxproj", "{7CBBEAD1-E3B6-4D38-8DB0-C2E9B31E8936}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "E06s_LERP_DEMO", "E06s_LERP\E06s_LERP.vcxproj", "{C5640036-1AB3-4550-B93B-A130ABA5766D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "A05s_Transformations_DEMO", "A05s_Transformations\A05s_Transformations.vcxproj", "{731BEF6C-42D8-41D5-9C26-FCC908241B92}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "A10s_BoundingObjectSingleton_DEMO", "A10s_BoundingObjectSingleton\A10s_BoundingObjectSingleton.vcxproj", "{13FA2754-46C1-49D8-B9A4-1DC856801931}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "T01A_Exam_Solution", "T01-As\T01-As.vcxproj", "{AA18B089-83AC-4904-8600-CD68E61EDC26}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "A11_SAT", "A11_SAT\A11_SAT.vcxproj", "{1F399E1A-9AA5-482B-863C-C921F8BC8F5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -189,6 +197,22 @@ Global
 		{C5640036-1AB3-4550-B93B-A130ABA5766D}.Debug|x86.Build.0 = Debug|Win32
 		{C5640036-1AB3-4550-B93B-A130ABA5766D}.Release|x86.ActiveCfg = Release|Win32
 		{C5640036-1AB3-4550-B93B-A130ABA5766D}.Release|x86.Build.0 = Release|Win32
+		{731BEF6C-42D8-41D5-9C26-FCC908241B92}.Debug|x86.ActiveCfg = Debug|Win32
+		{731BEF6C-42D8-41D5-9C26-FCC908241B92}.Debug|x86.Build.0 = Debug|Win32
+		{731BEF6C-42D8-41D5-9C26-FCC908241B92}.Release|x86.ActiveCfg = Release|Win32
+		{731BEF6C-42D8-41D5-9C26-FCC908241B92}.Release|x86.Build.0 = Release|Win32
+		{13FA2754-46C1-49D8-B9A4-1DC856801931}.Debug|x86.ActiveCfg = Debug|Win32
+		{13FA2754-46C1-49D8-B9A4-1DC856801931}.Debug|x86.Build.0 = Debug|Win32
+		{13FA2754-46C1-49D8-B9A4-1DC856801931}.Release|x86.ActiveCfg = Release|Win32
+		{13FA2754-46C1-49D8-B9A4-1DC856801931}.Release|x86.Build.0 = Release|Win32
+		{AA18B089-83AC-4904-8600-CD68E61EDC26}.Debug|x86.ActiveCfg = Debug|Win32
+		{AA18B089-83AC-4904-8600-CD68E61EDC26}.Debug|x86.Build.0 = Debug|Win32
+		{AA18B089-83AC-4904-8600-CD68E61EDC26}.Release|x86.ActiveCfg = Release|Win32
+		{AA18B089-83AC-4904-8600-CD68E61EDC26}.Release|x86.Build.0 = Release|Win32
+		{1F399E1A-9AA5-482B-863C-C921F8BC8F5A}.Debug|x86.ActiveCfg = Debug|Win32
+		{1F399E1A-9AA5-482B-863C-C921F8BC8F5A}.Debug|x86.Build.0 = Debug|Win32
+		{1F399E1A-9AA5-482B-863C-C921F8BC8F5A}.Release|x86.ActiveCfg = Release|Win32
+		{1F399E1A-9AA5-482B-863C-C921F8BC8F5A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

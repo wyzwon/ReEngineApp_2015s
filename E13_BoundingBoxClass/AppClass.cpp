@@ -72,10 +72,26 @@ void AppClass::Display(void)
 {
 	//clear the screen
 	ClearScreen();
+
 	//Render the grid based on the camera's mode:
-	m_pMeshMngr->AddGridToRenderListBasedOnCamera(m_pCameraMngr->GetCameraMode());
+	switch (m_pCameraMngr->GetCameraMode())
+	{
+	default: //Perspective
+		m_pMeshMngr->AddGridToRenderList(1.0f, REAXIS::XY); //renders the XY grid with a 100% scale
+		break;
+	case CAMERAMODE::CAMROTHOX:
+		m_pMeshMngr->AddGridToRenderList(1.0f, REAXIS::YZ, RERED * 0.75f); //renders the YZ grid with a 100% scale
+		break;
+	case CAMERAMODE::CAMROTHOY:
+		m_pMeshMngr->AddGridToRenderList(1.0f, REAXIS::XZ, REGREEN * 0.75f); //renders the XZ grid with a 100% scale
+		break;
+	case CAMERAMODE::CAMROTHOZ:
+		m_pMeshMngr->AddGridToRenderList(1.0f, REAXIS::XY, REBLUE * 0.75f); //renders the XY grid with a 100% scale
+		break;
+	}
+	
 	m_pMeshMngr->Render(); //renders the render list
-	m_pMeshMngr->ResetRenderList(); //Reset the Render list after render
+
 	m_pGLSystem->GLSwapBuffers(); //Swaps the OpenGL buffers
 }
 

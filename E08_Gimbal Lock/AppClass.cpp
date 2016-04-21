@@ -56,10 +56,10 @@ void AppClass::Display(void)
 {
 	//clear the screen
 	ClearScreen();
-	//Render the grid based on the camera's mode:
-	m_pMeshMngr->AddGridToRenderListBasedOnCamera(m_pCameraMngr->GetCameraMode());
-	m_pMeshMngr->Render(); //renders the render list
-	m_pMeshMngr->ResetRenderList(); //Reset the Render list after render
+	m_pMeshMngr->AddGridToRenderList(1.0f, REAXIS::XY); //renders the XY grid with a 100% scale
+
+	m_pMeshMngr->Render(); //renders the list of meshes in the system.
+
 	m_pGLSystem->GLSwapBuffers(); //Swaps the OpenGL buffers
 }
 

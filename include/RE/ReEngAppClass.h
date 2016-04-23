@@ -163,8 +163,8 @@ namespace ReEng
 			if (a_v4ClearColor != vector4(-1.0f))
 			{
 				m_v4ClearColor = a_v4ClearColor;
-				glClearColor(m_v4ClearColor.r, m_v4ClearColor.g, m_v4ClearColor.b, m_v4ClearColor.a);
 			}
+			glClearColor(m_v4ClearColor.r, m_v4ClearColor.g, m_v4ClearColor.b, m_v4ClearColor.a);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the window
 		}
 
@@ -296,11 +296,13 @@ namespace ReEng
 				glClearColor(m_v4ClearColor.r, m_v4ClearColor.g, m_v4ClearColor.b, m_v4ClearColor.a);
 
 			//Generate a new render target and set back the render target to be the window
-			//m_pGLSystem->GenerateRenderTarget(m_nFrameBuffer, m_nDepthBuffer, m_nDawingTexture);
-			//m_pMeshMngr->SetRenderTarget();
+			m_pGLSystem->GenerateRenderTarget(m_nFrameBuffer, m_nDepthBuffer, m_nDawingTexture);
+			m_pMeshMngr->SetRenderTarget();
 
 			//Start the clock
 			m_pSystem->StartClock();
+
+			m_selection = std::pair<int, int>(-1, -1);
 
 			printf("\n");
 		}
@@ -366,7 +368,7 @@ namespace ReEng
 		- float a_fSpeed = 0.005f
 		OUTPUT: ---
 		*/
-		virtual void CameraRotation(float a_fSpeed = 0.005f) final
+		virtual void CameraRotation(float a_fSpeed = 0.005f)
 		{
 			UINT	MouseX, MouseY;		// Coordinates for the mouse
 			UINT	CenterX, CenterY;	// Coordinates for the center of the screen.
@@ -426,9 +428,9 @@ namespace ReEng
 
 			// Indicate window properties
 			m_pSystem->SetWindowName(a_sWindowName);
-			m_pSystem->SetWindowResolution();
-			//m_pSystem->SetWindowFullscreen();
-			//m_pSystem->SetWindowBorderless(false);
+			m_pSystem->SetWindowResolution(RESOLUTIONS::C_1280x720_16x9_HD);
+			m_pSystem->SetWindowFullscreen(RESOLUTIONS::WINDOWED);
+			m_pSystem->SetWindowBorderless(false);
 
 			// Set the clear color based on Microsoft's CornflowerBlue (default in XNA)
 			//if this line is in Init Window it will depend on the .cfg file, if it
@@ -468,10 +470,8 @@ namespace ReEng
 				{
 					int nValue;
 					sscanf_s(reader.m_sLine.c_str(), "Fullscreen: %d", &nValue);
-					if (nValue == 0)
-						m_pSystem->SetWindowFullscreen();
-					else
-						m_pSystem->SetWindowFullscreen();
+					if (nValue > 0)
+						m_pSystem->SetWindowFullscreen(RESOLUTIONS::C_1280x720_16x9_HD);
 				}
 				else if (sWord == "Borderless:")
 				{

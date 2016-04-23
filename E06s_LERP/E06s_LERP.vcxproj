@@ -12,7 +12,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C5640036-1AB3-4550-B93B-A130ABA5766D}</ProjectGuid>
-    <RootNamespace>E06s_LERP_DEMO</RootNamespace>
+    <RootNamespace>E06s_LERP</RootNamespace>
     <ProjectName>E06s_LERP_DEMO</ProjectName>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>

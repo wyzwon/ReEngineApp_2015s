@@ -13,6 +13,9 @@ using namespace ReEng; //Using ReEng namespace to use all the classes in the dll
 class AppClass : public ReEngAppClass
 {
 	float m_fDepth = 0.0f;
+	TextureManagerSingleton* m_pTextureMngr = nullptr;
+	String m_sTexture;
+	bool m_bUsingTexture = false;
 public:
 	typedef ReEngAppClass super;
 

@@ -89,6 +89,14 @@ public:
 	OUTPUT: ---
 	*/
 	virtual void Release(void) final;
+
+	/*
+	USAGE: Updates the camera
+	ARGUMENTS:
+		float a_fSpeed = 0.005f -> Speed of the cameras rotation
+	OUTPUT: ---
+	*/
+	virtual void CameraRotation(float a_fSpeed = 0.005f) final;
 };
 
 #endif //__APPLICATION_H_

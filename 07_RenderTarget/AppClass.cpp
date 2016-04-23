@@ -2,14 +2,8 @@
 void AppClass::InitWindow(String a_sWindowName)
 {
 	super::InitWindow("Render Tagets (Render to texture)"); // Window Name
-	// Set the clear color based on Microsoft's CornflowerBlue (default in XNA)
-	//if this line is in Init Application it will depend on the .cfg file, if it
-	//is on the InitVariables it will always force it regardless of the .cfg
 	m_v4ClearColor = vector4(RECORNFLOWERBLUE, 0.0f);
-	m_pSystem->SetWindowResolution(RESOLUTIONS::C_1920x1080_16x9_FULLHD);
-	m_pSystem->SetWindowBorderless(true);
 	//m_pSystem->SetWindowFullscreen(RESOLUTIONS::C_1920x1080_16x9_FULLHD);
-	
 }
 
 void AppClass::InitVariables(void)
@@ -24,13 +18,13 @@ void AppClass::InitVariables(void)
 	//Load a model onto the Mesh manager
 	m_pMeshMngr->LoadModel("Lego\\Unikitty.bto", "Unikitty");
 	
-	//TextureManagerSingleton* pTextureMngr = TextureManagerSingleton::GetInstance();
-	//pTextureMngr->LoadTexture("Stereo.jpg");
-
-	SystemSingleton* pSystem = SystemSingleton::GetInstance();
-	GLint nWidth = pSystem->GetWindowWidth();
-	GLint nHeight = pSystem->GetWindowHeight();
-	glViewport(0, 0, nWidth, nHeight);
+	m_bUsingTexture = false;
+	m_pTextureMngr = TextureManagerSingleton::GetInstance();
+	if (m_bUsingTexture)
+	{
+		m_sTexture = "Starry Night.jpg";
+		m_pTextureMngr->LoadTexture(m_sTexture);
+	}
 }
 
 void AppClass::Update(void)
@@ -74,8 +68,6 @@ void AppClass::Update(void)
 		dTotalTime = 0.0;
 	}
 
-
-	
 	//Set the model matrix for the first model to be the arcball
 	m_pMeshMngr->SetModelMatrix(ToMatrix4(m_qArcBall), 0);
 	
@@ -99,7 +91,7 @@ void AppClass::Update(void)
 void AppClass::Display(void)
 {
 	//Set the render target
-	//m_pMeshMngr->SetRenderTarget(m_nFrameBuffer, m_nDepthBuffer, m_nDawingTexture); //(To the first render target)
+	m_pMeshMngr->SetRenderTarget(m_nFrameBuffer, m_nDepthBuffer, m_nDawingTexture); //(To the first render target)
 	
 	//clear the screen (or render target)
 	ClearScreen();
@@ -111,15 +103,19 @@ void AppClass::Display(void)
 	m_pMeshMngr->Render(m_fDepth);
 
 	//Set the render target
-	//m_pMeshMngr->SetRenderTarget();//(to the screen)
+	m_pMeshMngr->SetRenderTarget();//(to the screen)
 	
 	//clear the screen (or render target)
-	//ClearScreen();
+	ClearScreen();
 
-	//TextureManagerSingleton* pTextureMngr = TextureManagerSingleton::GetInstance();
-	//int nTexture = pTextureMngr->IdentifyTexure("Stereo.jpg");
-	//GLuint temp = pTextureMngr->ReturnGLIndex(nTexture);
-	//m_pMeshMngr->RenderTexture(m_nDawingTexture);
+	if (m_bUsingTexture)
+	{
+		int nTexture = m_pTextureMngr->IdentifyTexure(m_sTexture);
+		GLuint temp = m_pTextureMngr->ReturnGLIndex(nTexture);
+		m_pMeshMngr->RenderTexture(temp);
+	}
+	else
+		m_pMeshMngr->RenderTexture(m_nDawingTexture);
 	
 	m_pMeshMngr->ResetRenderList(); //Reset the Render list after render
 	m_pGLSystem->GLSwapBuffers(); //Swaps the OpenGL buffers
